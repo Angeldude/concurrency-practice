@@ -1,7 +1,11 @@
+require 'celluloid/current'
+
 class Geom
+    include Celluloid
+    attr_reader :result
 
     def area(args)
-        area1(args[0], args[1], args[2])
+        @result = area1(args[0], args[1], args[2])
     end
 
     private
@@ -21,9 +25,5 @@ class Geom
             raise ArgumentError, "Missing or invalid shape"
         end
     end
-
-    # class << self
-    #     private :area1
-    # end
 end
 
