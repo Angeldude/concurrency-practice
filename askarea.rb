@@ -1,16 +1,19 @@
 require_relative 'geom'
 
-module AskArea
+class AskArea
 
-    def self.area
+    def area
       begin
-       Geom.area(number_prompt(shape_prompt))
+        geom = Geom.new
+       geom.area(number_prompt(shape_prompt))
       rescue ArgumentError => e
         puts "One or more invalid values: #{e.message}"
       end
     end
 
-    def self.shape_prompt
+    private
+
+    def shape_prompt
         puts "R)ectangle, T)riangle, or E)llipse: "
         s = gets.downcase.chomp
         case s[0]
@@ -25,7 +28,7 @@ module AskArea
         end
       end
 
-      def self.number_prompt(shape)
+      def number_prompt(shape)
         prompts = []
         results = []
         case shape
@@ -47,7 +50,7 @@ module AskArea
         results + [shape]
       end
 
-      def self.get_number(input)
+      def get_number(input)
         if input.to_i.to_s == input || input.to_f.to_s == input
           input.to_f
         elsif input.to_f < 0
@@ -57,8 +60,7 @@ module AskArea
         end
       end
 
-      class << self
-        private :get_number, :number_prompt, :shape_prompt
-      end
-
+      # class << self
+      #   private :get_number, :number_prompt, :shape_prompt
+      # end
 end

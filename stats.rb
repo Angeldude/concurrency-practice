@@ -1,14 +1,14 @@
-module Stats
+class Stats
 
-    def self.maximum(nums)
+    def maximum(nums)
         nums.max
     end
 
-    def self.minimum(nums)
+    def minimum(nums)
         nums.min
     end
 
-    def self.range(nums)
+    def range(nums)
         [maximum(nums), minimum(nums)]
     end
 end

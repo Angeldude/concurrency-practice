@@ -1,10 +1,12 @@
-module Geom
+class Geom
 
-    def self.area(args)
+    def area(args)
         area1(args[0], args[1], args[2])
     end
 
-    def self.area1(height=1, width=1, shape = {})
+    private
+
+    def area1(height=1, width=1, shape = {})
         if height < 0 || width < 0
             raise ArgumentError, "No negative values allowed"
         end
@@ -20,8 +22,8 @@ module Geom
         end
     end
 
-    class << self
-        private :area1
-    end
+    # class << self
+    #     private :area1
+    # end
 end
 
